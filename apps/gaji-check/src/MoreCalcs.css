@@ -1,0 +1,413 @@
+/* ── Section ─────────────────────────────────────────── */
+.more-calcs {
+  background: #fff;
+  padding: 2.5rem 1rem 3rem;
+  min-height: calc(100vh - 130px);
+}
+
+.more-calcs-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.more-calcs-header {
+  margin-bottom: 1.5rem;
+}
+
+.more-calcs-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.3px;
+}
+
+.more-calcs-sub {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin-top: 0.2rem;
+}
+
+/* ── Tab bar ─────────────────────────────────────────── */
+.tab-bar {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  border-radius: 6px 6px 0 0;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  color: #1d4ed8;
+  background: #f8fafc;
+}
+
+.tab-btn.active {
+  color: #1d4ed8;
+  border-bottom-color: #1d4ed8;
+  background: #eff6ff;
+}
+
+/* ── Tab panel layout ────────────────────────────────── */
+.tab-panel {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.calc-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 680px) {
+  .calc-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Inputs ──────────────────────────────────────────── */
+.calc-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.calc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.calc-field label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #475569;
+}
+
+.calc-input-wrap {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+.calc-input-wrap:focus-within {
+  border-color: #1d4ed8;
+  box-shadow: 0 0 0 3px rgba(29,78,216,0.08);
+}
+
+.calc-prefix {
+  padding: 0 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #64748b;
+  background: #f1f5f9;
+  border-right: 1.5px solid #e2e8f0;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.calc-input-wrap input,
+.calc-input-wrap select {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0 0.65rem;
+  height: 36px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #1e293b;
+  font-family: inherit;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  min-width: 0;
+}
+
+.calc-input-wrap input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+.calc-input-wrap.select::after {
+  content: '▾';
+  padding-right: 0.6rem;
+  font-size: 0.7rem;
+  color: #94a3b8;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.calc-note {
+  font-size: 0.73rem;
+  color: #94a3b8;
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+/* ── Results ─────────────────────────────────────────── */
+.calc-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.result-card {
+  background: white;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #e2e8f0;
+}
+
+.result-card.accent {
+  background: linear-gradient(135deg, #1d4ed8, #0891b2);
+  border: none;
+  color: white;
+}
+
+.result-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* ── Info tooltip ────────────────────────────────────── */
+.infotip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.infotip-btn {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid #94a3b8;
+  background: white;
+  color: #64748b;
+  font-size: 0.65rem;
+  font-weight: 700;
+  font-style: italic;
+  font-family: Georgia, serif;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  flex-shrink: 0;
+}
+
+.infotip-btn:hover {
+  border-color: #1d4ed8;
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.result-card.accent .infotip-btn {
+  border-color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.15);
+  color: white;
+}
+
+.result-card.accent .infotip-btn:hover {
+  background: rgba(255,255,255,0.25);
+  border-color: white;
+}
+
+.infotip-box {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e293b;
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.55;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  width: 240px;
+  text-align: left;
+  letter-spacing: 0;
+  text-transform: none;
+  z-index: 100;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.infotip-box::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1e293b;
+}
+
+.dsr-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.result-card.accent .result-label {
+  color: rgba(255,255,255,0.75);
+}
+
+.result-value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.3px;
+}
+
+.result-card.accent .result-value {
+  color: white;
+}
+
+.result-sub {
+  font-size: 0.73rem;
+  color: #94a3b8;
+  margin-top: 0.2rem;
+}
+
+.result-card.accent .result-sub {
+  color: rgba(255,255,255,0.65);
+}
+
+.no-result {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  padding: 1rem 0;
+}
+
+/* ── DSR bar ─────────────────────────────────────────── */
+.dsr-bar {
+  background: white;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #e2e8f0;
+}
+
+
+.dsr-track {
+  height: 6px;
+  background: #f1f5f9;
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 0.4rem;
+}
+
+.dsr-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.3s;
+}
+
+.dsr-bar.ok    .dsr-fill { background: #10b981; }
+.dsr-bar.warn  .dsr-fill { background: #f59e0b; }
+.dsr-bar.danger .dsr-fill { background: #ef4444; }
+
+.dsr-value {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #475569;
+}
+
+.dsr-bar.danger .dsr-value { color: #ef4444; }
+.dsr-bar.warn   .dsr-value { color: #d97706; }
+.dsr-bar.ok     .dsr-value { color: #059669; }
+
+/* ── PTPTN tip ───────────────────────────────────────── */
+.ptptn-tip {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  padding: 0.65rem 0.8rem;
+  font-size: 0.78rem;
+  color: #92400e;
+  line-height: 1.5;
+  margin-top: 0.25rem;
+}
+
+/* ── Tax relief layout ───────────────────────────────── */
+.relief-layout {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+.relief-inputs {
+  gap: 0.5rem;
+}
+
+.relief-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.relief-row-label {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.relief-row-label span:first-child {
+  font-size: 0.82rem;
+  color: #334155;
+  font-weight: 500;
+}
+
+.relief-max {
+  font-size: 0.7rem;
+  color: #94a3b8;
+}
+
+.relief-input {
+  width: 110px;
+  flex-shrink: 0;
+}
+
+.relief-input input,
+.relief-input select {
+  font-size: 0.82rem;
+}
